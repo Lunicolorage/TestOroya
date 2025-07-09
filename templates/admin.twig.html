@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultats</title>
+</head>
+<body>
+<table>
+<tr>
+    <th>Nom</th>
+    <th>Email</th>
+    <th>Mesaage</th>
+</tr>
+{% for ct in contact %}
+<tr>
+    <td>{{ ct.nom }}</td>
+    <td>{{ ct.email }}</td>
+    <td>{{ ct.texte }}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

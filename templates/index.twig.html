@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulaire</title>
+</head>
+<body>
+<form action="enregistrer.php" method="POST">
+    <input required id="nom" name="nom" type="text" placeholder="Votre nom">
+    <input required id="email" name="email" type="email"  placeholder="Votre email">
+    <input required id="texte" name="texte" type="text"  placeholder="Votre message">
+    <input id="envoyer" type="submit">
+</form>
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $('#envoyer').click(function(e){
+        var nom = ('#nom').val();
+        var email = ('#email').val();
+        var texte = ('#texte').val();
+        if (texte != "" && email != "" && nom != ""){
+            $.ajax({
+                url : "enregistrer.php",
+                type : "POST",
+                data : {
+                    "nom" : nom,
+                    "email": email,
+                    "texte": texte
+    },
+                error: function (request, error) {       
+                     console.log("Erreur : responseText: " + request.responseText);
+                },
+                success: function (data) {
+                    //console.log(data)
+                }
+            });
+        }
+        else{
+            alert("<td>{{ ct.nom }}</td>euillez remplir tout les champs")
+        }
+    });
+});
+</script>
+</html>
